@@ -6,7 +6,9 @@ require File.dirname(__FILE__) + '/../db'
 
 class FlavorPlotServer < Sinatra::Base
   
-  before { @db = Db.new(File.dirname(__FILE__) + '/../foo') }
+  set :public, File.dirname(__FILE__), '/public'
+  
+  before { @db = Db.new(File.dirname(__FILE__) + '/../data/db1') }
   
   get '/' do
     @db.data.to_json

@@ -17,6 +17,6 @@ class TestAllRecipes < Test::Unit::TestCase
                     </ul> 
         </div> 
 EOS
-    assert_equal ['Dijon mustard', 'fresh lemon juice', 'Worcestershire sauce'], AllRecipesParser.parse(html)
+    assert_equal ['dijon mustard', 'fresh lemon juice', 'worcestershire sauce'], AllRecipesParser.parse(html)
   end
 end

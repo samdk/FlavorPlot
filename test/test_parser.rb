@@ -8,7 +8,8 @@ class TestParser < Test::Unit::TestCase
       'tomato'        => 'cup tomato',
       'celery'        => 'celery',
       'braised lamb'  => '1 lb. braised lamb',
-      'garlic, peeled'=> '1 garlic, peeled'
+      'garlic, peeled'=> '1 garlic, peeled',
+      'parsley'       => '1 and 1/2 cups parsley'
     }
     pairs.each do |right, test|
       assert_equal right, Parser.extract_ingredient(test)

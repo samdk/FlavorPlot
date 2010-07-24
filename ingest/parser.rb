@@ -8,9 +8,15 @@ class Parser
   
   def self.extract_ingredient(ing)
     ingredient = []
-    
+    ing = ing.downcase
     ing.split.each do |word|
-      ingredient << word unless UNITS.include?(word.downcase.gsub('.','')) || word =~ /\d/
+      if UNITS.include?(word.gsub(/\W/,''))
+        ingredient = []
+      elsif word =~ /\d/
+        ingredient = []
+      else
+        ingredient << word
+      end
     end
     
     ingredient.join(' ')
