@@ -15,7 +15,7 @@ class Parser
       elsif word =~ /\d/
         ingredient = []
       else
-        ingredient << word
+        ingredient << word unless word == ''
       end
     end
     
