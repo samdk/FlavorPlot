@@ -1,5 +1,5 @@
 
-require "Net/HTTP"
+require "net/http"
 require "uri"
 
 PRINT_URL = "http://allrecipes.com/Recipe-Tools/Print/Recipe.aspx?origin=detail&servings=16&RecipeID="
@@ -24,10 +24,10 @@ def parse(parser, start, finish)
 			recipeurl = make_recipe_url link
 			puts recipeurl
 			recipe_response = Net::HTTP.get URI.parse(recipeurl)
-			#parser.parse(recipe_response)
+			parser.parse(recipe_response)
 		end
 	end
 end
 
 
-parse(nil, 17706, 17713)
+#parse(nil, 17706, 17713)
