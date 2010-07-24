@@ -15,18 +15,12 @@ def make_recipe_url(link)
 	RECIPE_URL + link[6..-1]
 end
 
-def parse(parser, start, finish)
-	start.upto(finish) do |i|
-		response = Net::HTTP.get URI.parse(PRINT_URL+i.to_s)
-		link = lookForRecipeLink(response)
-		if link 
-			#puts link
-			recipeurl = make_recipe_url link
-			puts recipeurl
-			recipe_response = Net::HTTP.get URI.parse(recipeurl)
-			parser.parse(recipe_response)
-		end
-	end
+def parse(id)
+	response = Net::HTTP.get URI.parse(PRINT_URL+id.to_s)
+	link = lookForRecipeLink(response)
+	recipeurl = make_recipe_url link
+	puts recipeurl
+	recipe_response = Net::HTTP.get URI.parse(recipeurl)
 end
 
 
