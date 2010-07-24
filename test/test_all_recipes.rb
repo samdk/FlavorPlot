@@ -16,6 +16,7 @@ class TestAllRecipes < Test::Unit::TestCase
                         1 1/2 teaspoons Worcestershire sauce</li> 
                     </ul> 
         </div> 
+        <div class="directions">...
 EOS
     assert_equal ['dijon mustard', 'fresh lemon juice', 'worcestershire sauce'], AllRecipesParser.parse(html)
   end

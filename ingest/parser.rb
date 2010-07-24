@@ -2,7 +2,7 @@ class Parser
   
   UNITS = %w[ tbsp tbsp t tablespoon tablespoons tsp tsps ts teaspoon teaspoons
               cups cup pint pints quart quarts liter liters gallon gallons ml
-              pinch cans can
+              pinch cans can jar jars
               oz ounce ounces lb pound lbs fl
             ]
   
