@@ -1,8 +1,10 @@
 require 'net/http'
 require 'uri'
 
-require 'parser'
-require 'spider'
+require File.dirname(__FILE__) + '/parser'
+require File.dirname(__FILE__) + '/spider'
+require File.dirname(__FILE__) + '/../db'
+
 Dir.glob('parsers/*').each {|f| require f}
 Dir.glob('spiders/*').each {|f| require f}
 
