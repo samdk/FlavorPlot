@@ -1,6 +1,6 @@
 class Parser
   
-  UNITS = %w[ tbsp tbsp t tablespoon tablespoons tsp tsps ts
+  UNITS = %w[ tbsp tbsp t tablespoon tablespoons tsp tsps ts teaspoon teaspoons
               cups cup pint pints quart quarts liter liters gallon gallons ml
               pinch
               oz ounces lb pound lbs fl
