@@ -1,5 +1,5 @@
 require 'test/unit'
-require File.dirname(__FILE__) + '/../parsers/all_recipes'
+require File.dirname(__FILE__) + '/../ingest/parsers/all_recipes'
 
 class TestAllRecipes < Test::Unit::TestCase
   def test_basic

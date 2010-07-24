@@ -1,5 +1,5 @@
 require 'test/unit'
-require File.dirname(__FILE__) + '/../parser'
+require File.dirname(__FILE__) + '/../ingest/parser'
 
 class TestParser < Test::Unit::TestCase
   def test_extract_ingredient
