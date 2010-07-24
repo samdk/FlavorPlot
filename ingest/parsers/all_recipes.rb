@@ -6,7 +6,8 @@ class AllRecipesParser < Parser
     ingredients = []
     if html =~ /<div class="ingredients"[^>]+>(.+)<\/div>/
       $1.scan(/wrap">([^<]+)/) do |match|
-        ingredients << extract_ingredient(match[0])
+        ing = extract_ingredient(match[0])
+        ingredients << ing unless ing == ''
       end
     end
     ingredients
