@@ -3,7 +3,7 @@ class Db
   
   def initialize(file=nil)
     # Should be in the format {ingredient => {ingredient => weight, ...}, ... }
-    @data = file ? Marshal.load(File.open(file)) : {}
+    @data = file ? File.open(file) {|f| Marshal.load(f) } : {}
     @file = file
   end
   
@@ -27,7 +27,9 @@ class Db
   end
   
   def save(file=nil)
-    Marshal.dump @data, File.open(file || @file, 'w')
+    File.open(file || @file, 'w') do |f|
+      Marshal.dump @data, f
+    end
   end
   
   def merge(from, to)
