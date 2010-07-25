@@ -14,5 +14,5 @@ $(function(){
         swap($(this).html());
     });
     
-    swap('eggs');
+    swap('egg');
 })

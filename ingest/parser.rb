@@ -12,9 +12,9 @@ class Parser
   
   def self.extract_ingredient(ing)
     ingredient = []
-    ing = ing.downcase.gsub(/\(.*\)/,'').gsub(/[^a-z]/,'')
+    ing = ing.downcase.gsub(/\(.*\)/,'')
     ing.split.each do |word|
-      word = word.singularize
+      word = word.singularize.gsub(/[^a-z]/,'')
       if BAD_WORDS.include?(word) || word =~ /\d/ || word.size <= 2
         ingredient = []
       else
