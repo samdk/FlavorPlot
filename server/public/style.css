@@ -1,13 +1,21 @@
 body {
     font-family: Helvetica, arial;
     margin: 0;
-    padding: 0;
+    padding: 50px;
     background: #012;
-    color: #def;
+    color: #bcd;
 }
+a{ color : #bcd;}
 
 #container {
-   
+   font-size: 18px;
+}
+
+li {
+    list-style-type: none;
+    float: left;
+    margin: 10px;
+    
 }
 
 .node {

@@ -8,7 +8,7 @@ class FlavorPlotServer < Sinatra::Base
   
   set :public, File.dirname(__FILE__) + '/public'
   
-  before { @db = Db.new(File.dirname(__FILE__) + '/../data/db1') }
+  before { @db = Db.new(File.dirname(__FILE__) + '/../data.db') }
   
   get '/' do
     @db.data.to_json
@@ -19,7 +19,7 @@ class FlavorPlotServer < Sinatra::Base
   end
   
   get '/:ing' do |i|
-    @db.get(i).to_json
+    @db.get(i).to_a.sort_by{|(i,p)|-p}.map{|(i,p)| {'ingredient' => i, 'relation' => p}}.to_json
   end
   
 end
