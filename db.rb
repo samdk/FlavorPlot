@@ -23,10 +23,16 @@ class Db
     @data[ing][ing2]  += 1
     
     @data[ing2][ing] ||= 0
-    @data[int2][int]  += 1
+    @data[ing2][ing]  += 1
   end
   
   def save(file=nil)
     Marshal.dump @data, File.open(file || @file, 'w')
+  end
+  
+  def merge(from, to)
+    @data[from].each_pair {|ing, weight| add(to, ing, weight) }
+    @data.delete from
+    @data.each_pair {|idc, ings| ings.delete from }
   end
 end
