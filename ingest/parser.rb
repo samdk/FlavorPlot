@@ -20,7 +20,7 @@ class Parser
       end
     end
     
-    ingredient.join(' ')
+    ingredient.uniq.join(' ')
   end
   
 end
