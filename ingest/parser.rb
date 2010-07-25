@@ -4,7 +4,7 @@ class Parser
                   cup pint quart liter gallon ml
                   pinch can jar package taste
                   oz ounce lb pound fl
-                  optional to cover for garnish
+                  optional to cover for garnish loafe
                   whole chunk sliced diced chopped flaked package minced thinly corsely
                     finely slice beaten dried dry piece sifted cooked inch drop shredded
                   degrees
