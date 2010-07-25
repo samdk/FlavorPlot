@@ -1,18 +1,19 @@
 class Parser
   
-  UNITS = %w[ tbsp tbsp t tablespoon tablespoons tsp tsps ts teaspoon teaspoons
-              cups cup pint pints quart quarts liter liters gallon gallons ml
-              pinch cans can jar jars
-              oz ounce ounces lb pound lbs fl
-            ]
+  BAD_WORDS = %w[ tbsp tbsp t tablespoon tablespoon tsp teaspoon
+                  cup pint quart liter gallon ml
+                  pinch can jar package
+                  oz ounce lb pound fl
+                  optional to cover
+                  degrees
+                ]
   
   def self.extract_ingredient(ing)
     ingredient = []
-    ing = ing.downcase
+    ing = ing.downcase.gsub(/\(.*\)/,'')
     ing.split.each do |word|
-      if UNITS.include?(word.gsub(/\W/,''))
-        ingredient = []
-      elsif word =~ /\d/
+      word = word.singularize
+      if BAD_WORDS.include?(word.gsub(/\W/,'')) || word =~ /\d/ || word.size <= 2
         ingredient = []
       else
         ingredient << word

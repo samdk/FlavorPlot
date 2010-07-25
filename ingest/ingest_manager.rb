@@ -1,6 +1,9 @@
 require 'net/http'
 require 'uri'
 
+require 'rubygems'
+require 'active_support'
+
 require File.dirname(__FILE__) + '/parser'
 require File.dirname(__FILE__) + '/spider'
 require File.dirname(__FILE__) + '/../db'
