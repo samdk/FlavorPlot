@@ -6,7 +6,7 @@ class Parser
                   oz ounce lb pound fl
                   optional to cover for garnish
                   whole chunk sliced diced chopped flaked package minced thinly corsely
-                    finely slice beaten dried dry piece sifted cooked
+                    finely slice beaten dried dry piece sifted cooked inch drop shredded
                   degrees
                 ]
   
