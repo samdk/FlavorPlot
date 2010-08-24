@@ -7,23 +7,28 @@ class Db
     @file = file
   end
   
-  def get(ing, ing2=nil)
-    if ing2
-      @data[ing][ing2] rescue '0'
+  def get(a, b=nil)
+    if b
+      (@data[a][b] || 0) rescue 0
     else
-      @data[ing]
+      @data[a]
     end
   end
   
-  def add(ing, ing2, weight=1)
-    @data[ing]       ||= {}
-    @data[ing2]      ||= {}
+  def each(&block)
+    @data.each(&block)
+  end
+  
+  def add(a, b, weight=1)
+    set(a, b, get(a, b) + 1);
+  end
+  
+  def set(a, b, v)
+    @data[a] ||= {}
+    @data[b] ||= {}
     
-    @data[ing][ing2] ||= 0
-    @data[ing][ing2]  += 1
-    
-    @data[ing2][ing] ||= 0
-    @data[ing2][ing]  += 1
+    @data[a][b] = v    
+    @data[b][a] = v
   end
   
   def save(file=nil)
@@ -32,9 +37,13 @@ class Db
     end
   end
   
+  def save_as(x) ; save x ; end
+  
   def merge(from, to)
-    @data[from].each_pair {|ing, weight| add(to, ing, weight) }
+    @data[from].each_pair do |ing, weight|
+      add(to, ing, weight)
+      @data[ing].delete from
+    end
     @data.delete from
-    @data.each_pair {|idc, ings| ings.delete from }
   end
 end
