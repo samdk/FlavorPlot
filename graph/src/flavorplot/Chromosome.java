@@ -12,6 +12,7 @@ public class Chromosome{
 	
 	private Map<String, Map<String, Float>> map;
 	private Map<String, Point> positions;
+	private String[] names;
 	
 	public Chromosome(Map<String, Map<String, Float>> map){
 	    this.fitness        = 0f;
@@ -21,6 +22,7 @@ public class Chromosome{
 		this.map            = map;
 		this.fitnessCached  = false;
 		this.positions      = randomizedPositions(map);
+		this.names          = map.keySet().toArray(new String[]{});
 	}
 	
 	public Map<String, Point> randomizedPositions(Map<String, Map<String, Float>> map){
@@ -45,30 +47,18 @@ public class Chromosome{
         if(fitnessCached) return fitness;
         fitnessCached = true;
         fitness = 0f;
-        int crosses = 0, goodLines = 0;
-        float idealDistance = 1 / (float)Math.sqrt(map.size());
-        float minDistance = idealDistance;
-        for(String i : map.keySet())
-            for(String j : map.keySet()){
-                if(map.get(i).containsKey(j)){
-                    float str = strength(i,j);
-                    for(String k : map.keySet()){
-                        for(String l : map.get(k).keySet())
-                            if(i != l && i != k && k.compareTo(l) > 0)
-                                if(isIntersecting(positions.get(i), positions.get(j), positions.get(k), positions.get(l)))
-                                    crosses++;//fitness -= 1;//str;
-                                else if(positions.get(i).distanceTo(positions.get(j)) > minDistance)
-                                    goodLines++;//fitness += 1;//str;
-                                else{
-                                    goodLines++;
-                                    crosses++;
-                                }
-                    }
-                }else{
-                    fitness += positions.get(i).distanceTo(positions.get(j));
-                }
+        float theta = 1f, stress = 0.0001f;
+        for(int i = 0; i < names.length-1; i++){
+            for(int j = i+1; j < names.length; j++){
+                float d = positions.get(a).distanceTo(positions.get(b));
+        	    if(d < 0.01) d = 0.01f;
+        	    float repulsiveForce = 1f/(d*d*d),
+        	          attractiveForce = theta*strength(a,b)*d;
+        	          
+        	    stress += Math.abs(repulsiveForce - attractiveForce);
             }
-        fitness *= goodLines / (crosses + (float) goodLines);
+        }
+        fitness = 1/stress;
         return fitness;
     }
     
