@@ -82,11 +82,9 @@ public class Nodes {
                 out = new PrintWriter(client.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(client.getInputStream()));
             }
-            System.out.println("HERE");
             
             try{
                 while((line = in.readLine()) == null) Thread.sleep(25);
-                System.out.println(fan(line.split("\t")));
                 out.println(fan(line.split("\t")));
                 out.flush();
             } catch(Exception e) { System.out.println(e); }

@@ -15,14 +15,9 @@ class FlavorPlotServer < Sinatra::Base
     
     socket = TCPSocket.open('localhost', 9929)
     socket.puts ingredients.join("\t")
-    
-    puts "HERE"
-    
+        
     input = socket.gets
-    sleep 1 while (input = socket.gets).nil?
     
-    puts "THAR"
-
     socket.close
 
     output = input.strip.split("\t").compact.map {|x| x.split(",").compact.map &:strip }
