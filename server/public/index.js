@@ -213,8 +213,10 @@
       var val;
       val = $('#field').val();
       addChild(val, [], true);
-      getAndAddChildren(val);
-      getAndAddChildren(selected);
+      getAndAddChildren(JSON.stringify([val]));
+      if (selected.length > 1) {
+        getAndAddChildren(selected);
+      }
       $('ul').prepend('<li><span>' + val + '</span> <a href="#">x</a></li>');
       return false;
     });
