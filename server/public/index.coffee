@@ -23,7 +23,7 @@ removeFrom = (item,arr) ->
 
 class Graph
 	constructor: (@id) ->
-		sys = @sys = arbor.ParticleSystem(500,2000,0.5)
+		sys = @sys = arbor.ParticleSystem(800,2000,0.5)
 		@sys.parameters = {gravity:true}
 		selected = @selected = []
 		r = new Renderer(@id)

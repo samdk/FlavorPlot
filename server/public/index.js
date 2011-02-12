@@ -30,7 +30,7 @@
     function Graph(id) {
       var r;
       this.id = id;
-      sys = this.sys = arbor.ParticleSystem(500, 2000, 0.5);
+      sys = this.sys = arbor.ParticleSystem(800, 2000, 0.5);
       this.sys.parameters = {
         gravity: true
       };
