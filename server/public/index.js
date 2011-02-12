@@ -209,14 +209,17 @@
     addChild = g.addChild;
     removeNodeTree = g.removeNodeTree;
     removeParent = g.removeParent;
-    g.addRandNodes();
     $('#button').click(function() {
       var val;
       val = $('#field').val();
+      addChild(val, [], true);
+      getAndAddChildren(val);
+      getAndAddChildren(selected);
       $('ul').prepend('<li><span>' + val + '</span> <a href="#">x</a></li>');
       return false;
     });
     return $('ul li a').live('click', function() {
+      deselectFunc($(this).parent().children('span').val());
       $(this).parent().remove();
       return false;
     });

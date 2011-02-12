@@ -143,15 +143,17 @@ $(document).ready(() ->
 	addChild = g.addChild
 	removeNodeTree = g.removeNodeTree
 	removeParent = g.removeParent
-	g.addRandNodes()
 
 	$('#button').click( ->
 		val = $('#field').val()
-		#getAndAddChildren(val)
+		addChild(val,[],true)
+		getAndAddChildren(val)
+		getAndAddChildren(selected)
 		$('ul').prepend('<li><span>'+val+'</span> <a href="#">x</a></li>')
 		return false
 		)
 	$('ul li a').live('click', ->
+		deselectFunc($(this).parent().children('span').val())
 		$(this).parent().remove()
 		return false
 		)
