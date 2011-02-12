@@ -1,17 +1,35 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>FlavorPlot</title>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script> 
-    <script src="application.js"></script>
-    
-    <link type="text/css" rel="stylesheet" href="style.css" /> 
-  </head>
-  <body>
-    <div id="container">
-      <div id="primary"></div>
-      <ul id="related"></ul>
-    </div>
-    <div id="scroller"></div>
-  </body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Flavor</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+	<body>
+	<canvas id="viewport" width="700" height="400"></canvas>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script src="application.js"></script>
+	<div id="sidebar">
+		<div>
+			<h2>Ingredients</h2>
+			<form>
+				<fieldset>
+					<input type="text" />
+					<input type="submit" value="Add" />
+				</fieldset>
+			</form>
+			<ul>
+				<li>Ingred <a href='#'>x</a></li>
+				<li>ient <a href='#'>x</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<script src="arbor.js"></script>  
+	<script src="index.js"></script>
+
+	</body>
 </html>
