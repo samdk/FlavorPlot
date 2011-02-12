@@ -222,6 +222,7 @@
       return false;
     });
     return $('ul li a').live('click', function() {
+      console.log('deleting');
       deselectFunc($(this).parent().children('span').val());
       $(this).parent().remove();
       return false;
