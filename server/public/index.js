@@ -223,7 +223,8 @@
     });
     return $('ul li a').live('click', function() {
       var val;
-      val = $(this).parent().children('span').val();
+      val = $(this).parent().children('span')[0].val();
+      console.log('deleting: ');
       console.log(val);
       deselectFunc(val);
       $(this).parent().remove();
