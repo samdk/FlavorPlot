@@ -23,8 +23,6 @@ int main(int argv, char **argc) {
 			tmp = strtok(NULL,"\t");
 		}
 		
-		
-		
 	} while(strcmp(input, "exit\n"));
 	return 0;
 }
