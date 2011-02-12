@@ -51,7 +51,7 @@ public class Nodes {
     }
     
     private static void populate() throws Exception{
-        Scanner s = new Scanner(new File("round1.csv"));
+        Scanner s = new Scanner(new File("round2-no-singletons.csv"));
         while(s.hasNextLine()){
             String[] parts = s.nextLine().split(",");
            

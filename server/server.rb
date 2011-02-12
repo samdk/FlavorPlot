@@ -7,9 +7,12 @@ class FlavorPlotServer < Sinatra::Base
   
   set :public, File.dirname(__FILE__) + '/public'
   
+  get '/' do
+    redirect '/index.html'
+  end
+  
   post '/ingredients' do		
-  	stuff = request.body.read
-    ingredients = JSON stuff
+    ingredients = JSON request.body.read.downcase
     
     output = []
     
