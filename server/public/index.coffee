@@ -157,7 +157,7 @@ $(document).ready(() ->
 		return false
 		)
 	$('ul li a').live('click', ->
-		val = $(this).parent().children('span')[0].val()
+		val = $(this).parent().children('span').html()
 		console.log('deleting: ')
 		console.log(val)
 		deselectFunc(val)
