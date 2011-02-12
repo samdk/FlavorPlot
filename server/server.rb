@@ -29,6 +29,7 @@ class FlavorPlotServer < Sinatra::Base
   	
     output.each do |recipe|
       in_common = recipe & ingredients
+      
       recipe.each do |ing|
         in_common.each do |ing2|
           count[[ing2, ing]] ||= 0

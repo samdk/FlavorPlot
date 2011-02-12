@@ -30,7 +30,7 @@
     function Graph(id) {
       var r;
       this.id = id;
-      sys = this.sys = arbor.ParticleSystem(800, 2000, 0.5);
+      sys = this.sys = arbor.ParticleSystem(800, 1000, 0.5);
       this.sys.parameters = {
         gravity: true
       };
@@ -215,7 +215,7 @@
     removeParent = g.removeParent;
     $('#button').click(function() {
       var val;
-      val = $('#field').val();
+      val = $('#field').val().toLowerCase();
       $('#field').val('');
       $('#sidebar').removeClass('big');
       addChild(val, [], true);

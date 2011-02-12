@@ -23,7 +23,7 @@ removeFrom = (item,arr) ->
 
 class Graph
 	constructor: (@id) ->
-		sys = @sys = arbor.ParticleSystem(800,2000,0.5)
+		sys = @sys = arbor.ParticleSystem(800,1000,0.5)
 		@sys.parameters = {gravity:true}
 		selected = @selected = []
 		r = new Renderer(@id)
@@ -150,7 +150,7 @@ $(document).ready(() ->
 	removeParent = g.removeParent
 
 	$('#button').click( ->
-		val = $('#field').val()
+		val = $('#field').val().toLowerCase()
 		$('#field').val('')
 		$('#sidebar').removeClass('big')
 		addChild(val,[],true)
