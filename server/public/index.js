@@ -210,10 +210,14 @@
     removeNodeTree = g.removeNodeTree;
     removeParent = g.removeParent;
     g.addRandNodes();
-    return $('#button').click(function() {
+    $('#button').click(function() {
       var val;
       val = $('#field').val();
-      $('ul li:first-child').before('<li><span>' + val + '</span> <a href="#">x</a></li>');
+      $('ul').prepend('<li><span>' + val + '</span> <a href="#">x</a></li>');
+      return false;
+    });
+    return $('ul li a').live('click', function() {
+      $(this).parent().remove();
       return false;
     });
   });

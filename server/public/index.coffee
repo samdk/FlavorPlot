@@ -148,7 +148,11 @@ $(document).ready(() ->
 	$('#button').click( ->
 		val = $('#field').val()
 		#getAndAddChildren(val)
-		$('ul li:first-child').before('<li><span>'+val+'</span> <a href="#">x</a></li>')
+		$('ul').prepend('<li><span>'+val+'</span> <a href="#">x</a></li>')
+		return false
+		)
+	$('ul li a').live('click', ->
+		$(this).parent().remove()
 		return false
 		)
 	)
