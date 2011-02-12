@@ -45,6 +45,7 @@ class Graph
 					parent = nodes[parentName]
 					parent.data.children.push(name)
 			nodes[name] = node
+		if name of nodes and root then nodes[name].data.selected = true
 	getAndAddChildren: (parents) ->
 		getIngredients(parents,(nC) -> 
 			console.log(nC)
@@ -70,7 +71,7 @@ class Graph
 	removeNodeTree: (name) ->
 		children = nodes[name].data.children
 		sys.pruneNode(name)
-		nodes[name] = undefined
+		delete nodes[name]
 		for child in children
 			removeNodeTree(child)
 

@@ -72,7 +72,10 @@
             parent.data.children.push(name);
           }
         }
-        return nodes[name] = node;
+        nodes[name] = node;
+      }
+      if (name in nodes && root) {
+        return nodes[name].data.selected = true;
       }
     };
     Graph.prototype.getAndAddChildren = function(parents) {
@@ -117,7 +120,7 @@
       var child, children, _i, _len, _results;
       children = nodes[name].data.children;
       sys.pruneNode(name);
-      nodes[name] = void 0;
+      delete nodes[name];
       _results = [];
       for (_i = 0, _len = children.length; _i < _len; _i++) {
         child = children[_i];
