@@ -63,3 +63,36 @@ edge_t *node_fan(i_node_t *ing){
     
     return out;
 }
+
+
+r_node_t *recipe_ids;
+/* PRAS -- put hash map stuff here */
+
+
+void init_graph(){
+    recipe_ids = malloc(45307 * sizeof(r_node_t));
+    
+    /* PRAS -- initialize hash map here */
+}
+
+void add_graph_entry(ushort recipe_id, char *name){
+    r_node_t *recipe = recipe_ids[recipe_id-1];
+    
+    i_node_t *ingredient = NULL;
+    if(/* PRAS -- see if "name" is in hash map */)
+        ingredient = (i_node_t *) /* PRAS -- get node from graph */;
+    else {
+        ingredient = i_node_create(name);
+        /* PRAS -- insert "ingredient" into hash map */
+    }
+    
+    node_connect(ingredient, recipe);
+}
+
+
+
+
+
+
+
+
