@@ -31,6 +31,12 @@ public class Nodes {
                         seen.add(r);
                 
                         for(INode i : r){
+                            if(!(i.name.equals("butter")
+                              || i.name.equals("water")
+                              || i.name.equals("white sugar")
+                              || i.name.equals("flour")
+                              || i.name.equals("salt")))
+                              
                             out.append(i.name + ",");
                         }
                 
