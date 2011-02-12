@@ -222,8 +222,10 @@
       return false;
     });
     return $('ul li a').live('click', function() {
-      console.log('deleting');
-      deselectFunc($(this).parent().children('span').val());
+      var val;
+      val = $(this).parent().children('span').val();
+      console.log(val);
+      deselectFunc(val);
       $(this).parent().remove();
       return false;
     });
