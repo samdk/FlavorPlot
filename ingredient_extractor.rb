@@ -13,7 +13,9 @@ class Parser
                   unsweetened sweetened allpurpose
                   large small medium thawed container melted nestle torn fullycooked campbell
                   uncooked grated dash toppings mazola envelope chunky quickrise ripe firm drained cubed
-                  ground undrained campbells fatfree clove crushed
+                  ground undrained campbells fatfree clove crushed reducedfat condensed pace fleischmann
+                  rapidrise mexicanstyle swanson lesssodium nosaltadded saltadded bag frozen quartered
+                  prepared square
                 ]
   
   def self.extract_ingredient(ing)
