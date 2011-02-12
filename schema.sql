@@ -1,8 +1,4 @@
-delimiter $$
-
-CREATE DATABASE `food_stage` /*!40100 DEFAULT CHARACTER SET latin1 */$$
-
-delimiter $$
+CREATE DATABASE `food_stage` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 CREATE TABLE `ingredient` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -11,14 +7,4 @@ CREATE TABLE `ingredient` (
   PRIMARY KEY (`id`),
   KEY `recipe_id` (`recipe_id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1$$
-
-delimiter $$
-
-CREATE TABLE `recipe` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1$$
-
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
