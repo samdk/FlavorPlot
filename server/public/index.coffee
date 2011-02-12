@@ -144,4 +144,11 @@ $(document).ready(() ->
 	removeNodeTree = g.removeNodeTree
 	removeParent = g.removeParent
 	g.addRandNodes()
+
+	$('#button').click( ->
+		val = $('#field').val()
+		#getAndAddChildren(val)
+		$('ul li:first-child').before('<li><span>'+val+'</span> <a href="#">x</a></li>')
+		return false
+		)
 	)

@@ -1,8 +1,5 @@
 (function() {
-  var Graph, Renderer, addChild, deselectFunc, getAndAddChildren, load_children, nodes, pS, removeFrom, removeNodeTree, removeParent, selectFunc, selected, sys;
-  load_children = function(selected) {
-    return ['x' + Math.round(Math.random() * 10000), 'y' + Math.round(Math.random() * 10000)];
-  };
+  var Graph, Renderer, addChild, deselectFunc, getAndAddChildren, nodes, pS, removeFrom, removeNodeTree, removeParent, selectFunc, selected, sys;
   selectFunc = function() {};
   deselectFunc = function() {};
   sys = {};
@@ -79,14 +76,16 @@
       }
     };
     Graph.prototype.getAndAddChildren = function(parents) {
-      var child, newChildren, _i, _len, _results;
-      newChildren = load_children(parents);
-      _results = [];
-      for (_i = 0, _len = newChildren.length; _i < _len; _i++) {
-        child = newChildren[_i];
-        _results.push(addChild(child, parents));
-      }
-      return _results;
+      return getIngredients(parents, function(nC) {
+        var child, _i, _len, _ref, _results;
+        _ref = JSON.parse(nC);
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          child = _ref[_i];
+          _results.push(addChild(child, parents));
+        }
+        return _results;
+      });
     };
     Graph.prototype.selectNode = function(name) {
       nodes[name].data.selected = true;
@@ -210,6 +209,12 @@
     addChild = g.addChild;
     removeNodeTree = g.removeNodeTree;
     removeParent = g.removeParent;
-    return g.addRandNodes();
+    g.addRandNodes();
+    return $('#button').click(function() {
+      var val;
+      val = $('#field').val();
+      $('ul li:first-child').before('<li><span>' + val + '</span> <a href="#">x</a></li>');
+      return false;
+    });
   });
 }).call(this);
