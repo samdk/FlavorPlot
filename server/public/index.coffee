@@ -46,7 +46,10 @@ class Graph
 					parent.data.children.push(name)
 			nodes[name] = node
 	getAndAddChildren: (parents) ->
-		getIngredients(parents,(nC) -> addChild(child,parents) for child in nC )
+		getIngredients(parents,(nC) -> 
+			console.log(nC)
+			addChild(child,parents) for child in nC
+			)
 	selectNode: (name) ->
 		nodes[name].data.selected = true
 		selected.push(name)

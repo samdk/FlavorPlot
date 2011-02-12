@@ -78,6 +78,7 @@
     Graph.prototype.getAndAddChildren = function(parents) {
       return getIngredients(parents, function(nC) {
         var child, _i, _len, _results;
+        console.log(nC);
         _results = [];
         for (_i = 0, _len = nC.length; _i < _len; _i++) {
           child = nC[_i];
