@@ -217,6 +217,7 @@
       var val;
       val = $('#field').val();
       $('#field').val('');
+      $('#sidebar').removeClass('big');
       addChild(val, [], true);
       getAndAddChildren([val]);
       if (selected.length > 1) {
