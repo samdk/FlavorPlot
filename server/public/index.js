@@ -77,11 +77,10 @@
     };
     Graph.prototype.getAndAddChildren = function(parents) {
       return getIngredients(parents, function(nC) {
-        var child, _i, _len, _ref, _results;
-        _ref = JSON.parse(nC);
+        var child, _i, _len, _results;
         _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          child = _ref[_i];
+        for (_i = 0, _len = nC.length; _i < _len; _i++) {
+          child = nC[_i];
           _results.push(addChild(child, parents));
         }
         return _results;
