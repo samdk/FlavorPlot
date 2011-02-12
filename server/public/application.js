@@ -1,3 +1,3 @@
-function asjflaskjf(ingredients, cb) {
-    $.post('/ingredients', ..., cb);
+function getIngredients(ingredients, cb) {
+    $.post('/ingredients', JSON.stringify(ingredients), cb, 'json');
 }
