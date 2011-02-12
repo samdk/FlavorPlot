@@ -12,7 +12,7 @@ public class Runner {
         String[] line;
         Map<String, Map<String, Float>> map = new HashMap<String, Map<String, Float>>();
         while((line = csv.readNext()) != null){
-            if(map.size() < 20){
+            if(map.size() < 10){
                 if(!map.containsKey(line[0])) map.put(line[0], new HashMap<String, Float>());
                 if(!map.containsKey(line[1])) map.put(line[1], new HashMap<String, Float>());
                 map.get(line[0]).put(line[1], Float.parseFloat(line[2]));
@@ -36,12 +36,13 @@ public class Runner {
             }
         }
    
-        GaOptimizer ga = new GaOptimizer(map, 500);
-        GraphViewer gv = new GraphViewer(ga);
+        //GaOptimizer ga = new GaOptimizer(map, 500);
+        ForceLayoutEngine fble = new ForceLayoutEngine(map);
+        GraphViewer gv = new GraphViewer(fble);
         
         for(int i = 0; i < 1000000; i++){
-            ga.run(10000);
-            System.out.println(ga.getBest().getFitness());
+            fble.tick();//run(10000);
+            //System.out.println(fble.);
             gv.repaint();
         }
     }

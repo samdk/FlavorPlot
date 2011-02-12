@@ -7,7 +7,7 @@ import java.util.*;
 
 public class GraphViewer extends JFrame {
     protected Visualizer viz;
-    public GraphViewer(GaOptimizer ga){
+    public GraphViewer(Positionable ga){
         add(viz = new Visualizer(ga));
         setSize(1000, 850);
         setTitle("Graph Layer-Outer");
@@ -16,9 +16,9 @@ public class GraphViewer extends JFrame {
     }
     
     static class Visualizer extends JPanel {
-        private GaOptimizer ga;
+        private Positionable ga;
         
-        public Visualizer(GaOptimizer ga){
+        public Visualizer(Positionable ga){
             this.ga = ga;
         }
         
@@ -27,8 +27,8 @@ public class GraphViewer extends JFrame {
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setColor(Color.black);
 			
-			Chromosome chr = ga.getBest();
-			Map<String, Point> positions = chr.getPositions();
+			//Chromosome chr = ga.getBest();
+			Map<String, Point> positions = ga.getPositions();
 			for(Map.Entry<String, Point> e : positions.entrySet()){
 			    Point p = e.getValue().scaledTo(new Point(900f, 750f));
 			    //System.out.println(i);
@@ -40,10 +40,10 @@ public class GraphViewer extends JFrame {
 
 			    for(Map.Entry<String, Point> f : positions.entrySet()){
 			        if(e.getKey().compareTo(f.getKey()) > 0){
-			            if(chr.strength(e.getKey(),f.getKey()) > 0){
-			                g2d.setColor(new Color(1-chr.strength(e.getKey(), f.getKey()),
-			                                       1-chr.strength(e.getKey(), f.getKey()),
-			                                       1-chr.strength(e.getKey(), f.getKey())));
+			            if(ga.strength(e.getKey(),f.getKey()) > 0){
+			                g2d.setColor(new Color(1-ga.strength(e.getKey(), f.getKey()),
+			                                       1-ga.strength(e.getKey(), f.getKey()),
+			                                       1-ga.strength(e.getKey(), f.getKey())));
 			                Point q = f.getValue().scaledTo(new Point(900f, 750f));
 			                g2d.drawLine((int) p.x+55, (int) p.y+55, (int) q.x + 55, (int) q.y + 55);
 			            }

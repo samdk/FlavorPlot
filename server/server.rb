@@ -8,7 +8,7 @@ class FlavorPlotServer < Sinatra::Base
   
   set :public, File.dirname(__FILE__) + '/public'
   
-  before { @db = Db.new(File.dirname(__FILE__) + '/../data.db') }
+  before { @db = Db.new(File.dirname(__FILE__) + '/../allrecipes.unprocessed.db') }
   
   get '/' do
     @db.data.to_json

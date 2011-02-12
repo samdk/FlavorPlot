@@ -47,13 +47,14 @@ public class Chromosome{
         if(fitnessCached) return fitness;
         fitnessCached = true;
         fitness = 0f;
-        float theta = 1f, stress = 0.0001f;
+        float theta = 10000f, stress = 0.0001f;
         for(int i = 0; i < names.length-1; i++){
             for(int j = i+1; j < names.length; j++){
+                String a = names[i], b = names[j];
                 float d = positions.get(a).distanceTo(positions.get(b));
         	    if(d < 0.01) d = 0.01f;
-        	    float repulsiveForce = 1f/(d*d*d),
-        	          attractiveForce = theta*strength(a,b)*d;
+        	    float repulsiveForce  = 1f/(d*d*d),
+        	          attractiveForce = theta*strength(a,b)*d*d;
         	          
         	    stress += Math.abs(repulsiveForce - attractiveForce);
             }
