@@ -212,8 +212,9 @@
     $('#button').click(function() {
       var val;
       val = $('#field').val();
+      $('#field').val('');
       addChild(val, [], true);
-      getAndAddChildren(JSON.stringify([val]));
+      getAndAddChildren([val]);
       if (selected.length > 1) {
         getAndAddChildren(selected);
       }

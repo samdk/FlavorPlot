@@ -146,8 +146,9 @@ $(document).ready(() ->
 
 	$('#button').click( ->
 		val = $('#field').val()
+		$('#field').val('')
 		addChild(val,[],true)
-		getAndAddChildren(JSON.stringify([val]))
+		getAndAddChildren([val])
 		if selected.length > 1 then getAndAddChildren(selected)
 		$('ul').prepend('<li><span>'+val+'</span> <a href="#">x</a></li>')
 		return false
