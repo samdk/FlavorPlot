@@ -94,7 +94,8 @@
       nodes[name].data.selected = true;
       selected.push(name);
       getAndAddChildren(selected);
-      return getAndAddChildren([name]);
+      getAndAddChildren([name]);
+      return $('ul').prepend('<li><span>' + name + '</span> <a href="#">x</a></li>');
     };
     Graph.prototype.deselectNode = function(name) {
       var child, childName, _i, _len, _ref;

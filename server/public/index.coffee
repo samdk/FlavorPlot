@@ -56,6 +56,7 @@ class Graph
 		selected.push(name)
 		getAndAddChildren(selected)
 		getAndAddChildren([name])
+		$('ul').prepend('<li><span>'+name+'</span> <a href="#">x</a></li>')
 	deselectNode: (name) ->
 		selected = removeFrom(name,selected)
 		for childName in nodes[name].data.children
