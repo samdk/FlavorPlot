@@ -76,18 +76,17 @@ public class Nodes {
         BufferedReader in = null;
         
         while(true){
-            while(client == null){
-                Thread.sleep(25);
-                client = server.accept();
-                out = new PrintWriter(client.getOutputStream(), true);
-                in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            }
+            client = server.accept();
+            out = new PrintWriter(client.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(client.getInputStream()));
             
             try{
                 while((line = in.readLine()) == null) Thread.sleep(25);
                 out.println(fan(line.split("\t")));
                 out.flush();
             } catch(Exception e) { System.out.println(e); }
+            
+            client = null;
         }
     }
 }
