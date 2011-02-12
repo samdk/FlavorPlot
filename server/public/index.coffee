@@ -161,6 +161,7 @@ $(document).ready(() ->
 		console.log('deleting: ')
 		console.log(val)
 		deselectFunc(val)
+		removeNodeTree(val)
 		$(this).parent().remove()
 		return false
 		)
