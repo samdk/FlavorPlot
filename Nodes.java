@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.net.*;
 
 public class Nodes {
     private final static HashMap<String, INode> ingredients = new HashMap<String, INode>();
@@ -22,22 +23,23 @@ public class Nodes {
         
         HashSet<Recipe> seen = new HashSet<Recipe>();
         
-            for(String name : names){
-                try { 
-                    INode node = ingredients.get(name);
-                    for(Recipe r : node.neighbors){
-                        if(!seen.contains(r)){
-                            seen.add(r);
-                    
-                            for(INode i : r){
-                                out.append(i.name + ",");
-                            }
-                    
-                            out.append("\t");
+        for(String name : names){
+            try { 
+                INode node = ingredients.get(name);
+                for(Recipe r : node.neighbors){
+                    if(!seen.contains(r)){
+                        seen.add(r);
+                
+                        for(INode i : r){
+                            out.append(i.name + ",");
                         }
+                
+                        out.append("\t");
                     }
-                }catch(Exception e){}
-            }
+                }
+            }catch(Exception e){}
+        }
+            
         
         return out.toString();
     }
@@ -66,15 +68,26 @@ public class Nodes {
     public static void main(String[] args) throws Exception{
         populate();
         
-        BufferedReader in = new BufferedReader(new FileReader(new File("in_pipe")));
-        PrintWriter out = new PrintWriter("out_pipe");
-        String line;
+        ServerSocket server = new ServerSocket(9929);
+        Socket client = null;
+        String line = null;
+
+        PrintWriter out = null;
+        BufferedReader in = null;
         
         while(true){
+            while(client == null){
+                Thread.sleep(25);
+                client = server.accept();
+                out = new PrintWriter(client.getOutputStream(), true);
+                in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            }
+            
             try{
                 while((line = in.readLine()) == null) Thread.sleep(25);
                 out.println(fan(line.split("\t")));
-            catch(Exception e){ System.out.println(e); }
+                out.flush();
+            } catch(Exception e) { System.out.println(e); }
         }
     }
 }

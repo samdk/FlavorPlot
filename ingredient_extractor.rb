@@ -13,7 +13,7 @@ class Parser
                   unsweetened sweetened allpurpose
                   large small medium thawed container melted nestle torn fullycooked campbell
                   uncooked grated dash toppings mazola envelope chunky quickrise ripe firm drained cubed
-                  ground undrained campbells fatfree
+                  ground undrained campbells fatfree clove crushed
                 ]
   
   def self.extract_ingredient(ing)
@@ -42,7 +42,7 @@ def go
     f.each do |line|
       begin
         if line =~ /[\d]+,([\d]+),(.*)/
-          puts "INSERT INTO ingredient(recipe_id, name) VALUES (#{$1}, '#{Parser.extract_ingredient($2)}');"
+          puts "#{$1},#{Parser.extract_ingredient($2)}"
         end
       rescue StandardError => ex
         nil
