@@ -69,14 +69,14 @@ public class Nodes {
         populate();
         
         ServerSocket server = new ServerSocket(9929);
-        Socket client = null;
-        String line = null;
 
         PrintWriter out = null;
         BufferedReader in = null;
         
         while(true){
-            client = server.accept();
+            Socket client = server.accept();
+            String line = null;
+            
             out = new PrintWriter(client.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(client.getInputStream()));
             
@@ -85,8 +85,6 @@ public class Nodes {
                 out.println(fan(line.split("\t")));
                 out.flush();
             } catch(Exception e) { System.out.println(e); }
-            
-            client = null;
         }
     }
 }
