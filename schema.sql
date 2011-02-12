@@ -1,6 +1,8 @@
-CREATE DATABASE `food_stage` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE IF NOT EXISTS `food_stage` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
-CREATE TABLE `ingredient` (
+USE food_stage;
+
+CREATE TABLE IF NOT EXISTS `ingredient` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `recipe_id` varchar(45) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
