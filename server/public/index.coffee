@@ -1,5 +1,3 @@
-load_children = (selected) -> ['x'+Math.round(Math.random()*10000),'y'+Math.round(Math.random()*10000)]
-
 selectFunc = ->
 deselectFunc = ->
 sys = {}
@@ -48,8 +46,7 @@ class Graph
 					parent.data.children.push(name)
 			nodes[name] = node
 	getAndAddChildren: (parents) ->
-		newChildren = load_children(parents)
-		addChild(child,parents) for child in newChildren
+		getIngredients(parents,(nC) -> addChild(child,parents) for child in JSON.parse(nC) )
 	selectNode: (name) ->
 		nodes[name].data.selected = true
 		selected.push(name)
@@ -147,4 +144,15 @@ $(document).ready(() ->
 	removeNodeTree = g.removeNodeTree
 	removeParent = g.removeParent
 	g.addRandNodes()
+
+	$('#button').click( ->
+		val = $('#field').val()
+		#getAndAddChildren(val)
+		$('ul').prepend('<li><span>'+val+'</span> <a href="#">x</a></li>')
+		return false
+		)
+	$('ul li a').live('click', ->
+		$(this).parent().remove()
+		return false
+		)
 	)
