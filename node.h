@@ -52,12 +52,12 @@ void node_connect(i_node_t *ing, r_node_t *r_id) {
 //REMEMBER TO FREE THE RETURN RESULT
 void node_fan(i_node_t *ing){
   if (ing == NULL){
-    printf("slut");
+    printf("null on argument");
     exit(1);
   }
   edge_t *itr = ing->children, *ritr = NULL, *tmp = NULL ;
    if (itr == NULL){
-    printf("whore\n");
+    printf("null edge\n");
     exit(1);
   }
 //FILE *in_pipe = fopen("in_pipe", "a");
